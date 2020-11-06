@@ -11,10 +11,17 @@ command to be run ->
 docker run -dit --name _cname_ --net {_netname_ || brigde} 
         -v _volname_:_volmount_ _imgname_:_imgv_
 '''
-def start_container(imgname, imgv=None, cname=None, volname=None, netname=None, volpath=None):
+def start_container():
+    os.system("tput clear")
+    imgname = input("enter docker image name (*req): ")
+    imgv = input("enter docker image version (latest): ") or "latest"
+    cname = input("enter docker container name (random): ") or None
+    volname = input("enter docker volume name (none): ") or None
+    volpath = input("enter docker volume path (none): ") or None
+    netname = input("enter docker net name[brigde/host/null] (bridge):") or "bridge"
+
     volmnt = ""
-    netname = netname or "bridge"
-    imgv = imgv or "latest"
+
     if (cname):
         cname = f"--name {cname}"
     else:
@@ -22,7 +29,7 @@ def start_container(imgname, imgv=None, cname=None, volname=None, netname=None, 
     if (volname and volpath):
         volmnt = f"-v {volname}:{volpath}"
     
-    return f'sudo docker run -dit --net {netname} {volmnt} {cname} {imgname}:{imgv}'
+    return subprocess.getoutput(f'sudo podman run -dit --net {netname} {volmnt} {cname} {imgname}:{imgv}')
 
 if __name__ == '__main__':
-    print("this code is not meant to be run.\nThis code will be imported")
+    print("this code is not meant to be run.\nThis is a module")

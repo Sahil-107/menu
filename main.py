@@ -6,8 +6,15 @@ if __name__ == "__main__":
     text = '''
     [1] run docker
     [2] run hadoop
-    [b] back to main menu
     [q] quit
+    Enter your option: '''
+    docker = '''
+    [1] create container
+    [2] pull image
+    [3] create volume
+    [4] create network
+    [5] check status
+    [b] back to main menu
     Enter your option: '''
     sshIp = ""
 
@@ -32,8 +39,13 @@ if __name__ == "__main__":
             print("exiting..")
             sleep(1)
             break
-        elif toolOpt == "b":
-            continue 
+        elif toolOpt == "1":
+            os.system("tput clear")
+            subOpt = input(docker)
+            if subOpt == "1":
+                container.start_container()
+            else: 
+                continue
         else:
             continue
 
