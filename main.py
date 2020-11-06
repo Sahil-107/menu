@@ -2,8 +2,7 @@ from time import sleep
 import os, subprocess
 import container
 
-def initial_prompt():
-
+if __name__ == "__main__":
     text = '''
     [1] run docker
     [2] run hadoop
@@ -38,6 +37,4 @@ def initial_prompt():
         else:
             continue
 
-if __name__ == "__main__":
-    initial_prompt()
     os.system("tput clear")
