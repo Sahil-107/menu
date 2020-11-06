@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from time import sleep
 import os, subprocess
 import container
@@ -43,7 +44,9 @@ if __name__ == "__main__":
             os.system("tput clear")
             subOpt = input(docker)
             if subOpt == "1":
-                container.start_container()
+                out=container.start_container()
+                print(out)
+                input("press any key to exit")
             else: 
                 continue
         else:
