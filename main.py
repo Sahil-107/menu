@@ -9,16 +9,19 @@ if __name__ == "__main__":
     [2] run hadoop
     [q] quit
     Enter your option: '''
-# TODO: options from 5
+# TODO: options from 9
     docker = '''
     [1] create container
     [2] pull image
     [3] list running contianers
-    [4] list images
-    [5] start container
-    [6] stop container
-    [7] terminate or delete contianer
-    [8] search for images
+    [4] list all containers
+    [5] list images
+    [6] start container
+    [7] stop container
+    [8] terminate or delete contianer
+    [9] copy file from container to host
+    [10] copy file from host to container
+    [11] search for images
     [b] back to main menu
     Enter your option: '''
     sshIp = ""
@@ -55,13 +58,24 @@ if __name__ == "__main__":
             elif subOpt == "2":
                 out=container.pullImg(sshIp)
             elif subOpt == "3":
-                out=container.status("container", sshIp)
+                out=container.operate("container", "ls", sshIp)
             elif subOpt == "4":
-                out=container.status("image", sshIp)
+                out=container.operate("container", "ls -a", sshIp)
+            elif subOpt == "5":
+                out=container.operate("image", "ls", sshIp)
+            elif subOpt == "6":
+                cnameId = input("Enter container name or id: ")
+                out=container.operate("container", "start", cnameId, sshIp)
+            elif subOpt == "7":
+                cnameId = input("Enter container name or id: ")
+                out=container.operate("container", "stop", cnameId, sshIp)
+            elif subOpt == "8":
+                cnameId = input("Enter container name or id: ")
+                out=container.operate("container", "rm -f", cnameId, sshIp)
             else: 
                 continue
             print(out)
-            input("press any key to exit")
+            input("press any key to go back to menu")
         else:
             continue
 

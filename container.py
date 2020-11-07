@@ -39,8 +39,8 @@ def pullImg(sshIp=""):
     return subprocess.getoutput(f'{sshIp} sudo podman pull {imgname}:{imgv}')
 
 
-def status(resourceType, sshIp=""):
-    return subprocess.getoutput(f'{sshIp} sudo podman {resourceType} ls')
+def operate(resourceType, op, cname="", sshIp=""):
+    return subprocess.getoutput(f'{sshIp} sudo podman {resourceType} {op} {cname}')
 
 if __name__ == '__main__':
     print("this code is not meant to be run.\nThis is a module")
