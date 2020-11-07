@@ -19,9 +19,10 @@ if __name__ == "__main__":
     [6] start container
     [7] stop container
     [8] terminate or delete contianer
-    [9] copy file from container to host
-    [10] copy file from host to container
-    [11] search for images
+    [9] execute commands in the container
+    [10] copy file from container to host
+    [11] copy file from host to container
+    [12] search for images
     [b] back to main menu
     Enter your option: '''
     sshIp = ""
@@ -72,6 +73,11 @@ if __name__ == "__main__":
             elif subOpt == "8":
                 cnameId = input("Enter container name or id: ")
                 out=container.operate("container", "rm -f", cnameId, sshIp)
+            elif subOpt == "9":
+                cnameId = input("Enter container name or id: ")
+                cmd = input("Enter the command you want to run: ")
+                cnameId = f"{cnameId} {cmd}"
+                out=container.operate("container", "exec -it", cnameId, sshIp)
             else: 
                 continue
             print(out)
