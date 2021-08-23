@@ -7,14 +7,20 @@ import awsmenu
 import hadoop
 import webserver
 import yum_config
+import partition_2
+import lvm
+import cron
 
 if __name__ == "__main__":
     text = '''
-    Press 1 to run docker
-    Press 2 to run AWS commands
-    Press 3 to Hadoop complete configurations
-    Press 4 to configure webserver
-    Press 5 to configure yum repos
+    Press 1 for Docker
+    Press 2 for AWS commands
+    Press 3 for Hadoop complete configurations
+    Press 4 for configure webserver
+    Press 5 for configure yum repos
+    Press 6 for Partitions
+    Press 7 for Logical volume Management
+    Press 8 for Crontab
     Press q to quit the Program
     Enter your option: '''
 
@@ -50,6 +56,12 @@ if __name__ == "__main__":
             webserver.webServer(sshIp)
         elif toolOpt == "5":
             yum_config.yum()
+        elif toolOpt == "6":
+            partition_2.part()
+        elif toolOpt == "7":
+            lvm.lvm()
+        elif toolOpt == "8":
+            cron.crontab()
         else:
             continue
 

@@ -25,7 +25,7 @@ def part():
 
         elif x=='2':
             device = input("Enter the Device name: ")
-            p_type = input("Which typr of partition you want to create? [p(Primary)/e(Extended)]: ").lower()
+            p_type = input("Which type of partition you want to create? [p(Primary)/e(Extended)]: ").lower()
             number=input("Enter the partition number (leave empty for default): ")
             start=input("Enter the First sector (leave empty for default): ")
             end=input("Enter the Last sector (leave empty for default): ")
